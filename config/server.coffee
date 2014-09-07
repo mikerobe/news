@@ -1,10 +1,16 @@
-config =
+url = require 'url'
+_ = require 'lodash'
+
+configs =
   development:
     port: 8080
     hostname: 'localhost'
 
-  production: 
+  production:
     port: 80
     hostname: 'localhost'
 
-module.exports = config[process.env.NODE_ENV?.toLowerCase() || 'production']
+Object.defineProperties module.exports = config = configs[process.env.NODE_ENV?.toLowerCase() || 'production'],
+  href:
+    get: ->
+      url.format _.defaults config, protocol: 'http'

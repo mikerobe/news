@@ -1,6 +1,5 @@
 mongoose = require 'mongoose'
 validators = require '../services/validators'
-autoIncrement = require 'mongoose-auto-increment'
 _ = require 'lodash'
 
 schema = new mongoose.Schema
@@ -31,5 +30,4 @@ schema.methods =
       'refreshMillis'
       'tags'
 
-schema.plugin autoIncrement.plugin, model: 'Feed', field: 'feedId'
 module.exports = mongoose.model 'Feed', schema

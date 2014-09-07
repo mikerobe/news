@@ -1,7 +1,7 @@
 Feed = require '../models/feed'
 
 module.exports =
-  load: (id, cb) -> Feed.findOne {feedId: id}, cb
+  load: (id, cb) -> Feed.findById id, cb
 
   index: (req, res, next) ->
     Feed.find (err, feeds) ->
@@ -14,6 +14,6 @@ module.exports =
     feed.save (err) ->
       return next err if err?
       req.publish feed
-      res.json feed
+      res.send()
 
   show: (req, res) -> res.json req.feed

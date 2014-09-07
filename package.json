@@ -15,7 +15,6 @@
     "hiredis": "^0.1.17",
     "lodash": "^2.4.1",
     "mongoose": "^3.8.15",
-    "mongoose-auto-increment": "^3.0.8",
     "redis": "^0.12.1",
     "socket.io": "^1.1.0"
   }

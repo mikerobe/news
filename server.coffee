@@ -1,23 +1,18 @@
 express = require 'express'
 bodyParser = require 'body-parser'
 mongoose = require 'mongoose'
-mongooseAutoIncrement = require 'mongoose-auto-increment'
 http = require 'http'
 io = require 'socket.io'
 _ = require 'lodash'
 errorHandler = require './middleware/error-handler'
 redisPublish = require './middleware/redis-publish'
 require 'express-resource'
+require './server/extensions'
 
 serverConfig = require './config/server'
 redisPublishConfig = require './config/redis-publish'
 
-require('express/lib/response').text = (body) ->
-  @set 'Content-Type', 'text/plain'
-  @send body
-
 mongoose.connect require('./config/database').url
-mongooseAutoIncrement.initialize mongoose.connection
 
 app = express()
 server = http.Server(app)
