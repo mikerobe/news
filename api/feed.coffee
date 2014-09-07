@@ -13,8 +13,7 @@ module.exports =
     feed.setMultiple req.body
     feed.save (err) ->
       return next err if err?
+      req.publish feed
       res.json feed
 
   show: (req, res) -> res.json req.feed
-
-

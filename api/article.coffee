@@ -14,6 +14,7 @@ module.exports =
     article = new Article
     article.setMultiple req.body
     article.feedId = req.feed.feedId
+    req.publish article
     article.save (err) ->
       return next err if err?
       res.json article
