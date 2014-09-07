@@ -1,7 +1,7 @@
 Feed = require '../models/feed'
 
 module.exports =
-  load: (id, cb) -> Feed.find {feedId: id}, (err, feeds) -> cb err, feeds?[0]
+  load: (id, cb) -> Feed.findOne {feedId: id}, cb
 
   index: (req, res, next) ->
     Feed.find (err, feeds) ->

@@ -21,8 +21,7 @@ schema = new mongoose.Schema
   feedId:
     type: Number
     required: true
-  text:
-    type: String
+    index: true
 
 schema.methods =
   setMultiple: (details) ->
@@ -33,7 +32,6 @@ schema.methods =
       'author'
       'summary'
       'feedId'
-      'text'
 
 schema.plugin autoIncrement.plugin, model: 'Article', field: 'articleId'
 module.exports = mongoose.model 'Article', schema
