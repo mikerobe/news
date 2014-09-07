@@ -1,6 +1,7 @@
 mongoose = require 'mongoose'
 validators = require '../services/validators'
 autoIncrement = require 'mongoose-auto-increment'
+_ = require 'lodash'
 
 schema = new mongoose.Schema
   title:
@@ -20,6 +21,8 @@ schema = new mongoose.Schema
   feedId:
     type: Number
     required: true
+  text:
+    type: String
 
 schema.methods =
   setMultiple: (details) ->
@@ -30,6 +33,7 @@ schema.methods =
       'author'
       'summary'
       'feedId'
+      'text'
 
 schema.plugin autoIncrement.plugin, model: 'Article', field: 'articleId'
 module.exports = mongoose.model 'Article', schema

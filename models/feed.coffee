@@ -21,6 +21,7 @@ schema = new mongoose.Schema
     default: 5 * 60 * 1000
   tags:
     type: [ String ]
+    index: true
 
 schema.methods =
   setMultiple: (details) ->
