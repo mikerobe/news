@@ -14,6 +14,6 @@ module.exports =
     feed.save (err) ->
       return next err if err?
       req.publish feed
-      res.send()
+      res.json id: feed._id
 
   show: (req, res) -> res.json req.feed

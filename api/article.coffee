@@ -17,7 +17,7 @@ module.exports =
       Article.bulkInsert articles, (err, jsonArray) ->
         return next err if err?
         req.publish _.filter jsonArray
-        res.send ids: jsonArray.map (article) -> article && article._id
+        res.json ids: jsonArray.map (article) -> article && article._id
     else
       article = new Article
       article.setMultiple req.body
@@ -25,7 +25,7 @@ module.exports =
       req.publish article
       article.save (err) ->
         return next err if err?
-        res.send id: article.id.toString()
+        res.json id: article.id.toString()
 
   show: (req, res) -> res.json req.article
 

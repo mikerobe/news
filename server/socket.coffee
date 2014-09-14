@@ -7,4 +7,8 @@ module.exports = (io, app, options={redis:{}}) ->
     socket.on 'disconnect', sub.quit.bind(sub)
     socket.on 'subscribe', sub.subscribe.bind(sub)
     socket.on 'unsubscribe', sub.unsubscribe.bind(sub)
-    sub.on 'message', socket.emit.bind(socket)
+    sub.on 'message', (endpoint, data) ->
+      try
+        socket.emit endpoint, JSON.parse(data)
+      catch _error
+        console.error "Unable to parse redis payload: #{data}"

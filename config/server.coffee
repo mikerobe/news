@@ -3,11 +3,11 @@ _ = require 'lodash'
 
 configs =
   development:
-    port: 8080
+    port: process.env.PORT || 8080
     hostname: 'localhost'
 
   production:
-    port: 80
+    port: process.env.PORT || 80
     hostname: 'localhost'
 
 Object.defineProperties module.exports = config = configs[process.env.NODE_ENV?.toLowerCase() || 'production'],

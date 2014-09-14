@@ -10,6 +10,7 @@ schema = new mongoose.Schema
   url:
     type: String
     validate: [validators.url, "The url is invalid."]
+    unique: true
   date:
     type: Date
     default: -> new Date()

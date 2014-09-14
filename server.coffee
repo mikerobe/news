@@ -19,7 +19,7 @@ server = http.Server(app)
 require('./server/socket') io(server), app, redis: redisPublishConfig
 
 app.use bodyParser.urlencoded extended: true
-app.use bodyParser.json()
+app.use bodyParser.json(limit: '50mb')
 app.use redisPublish redisPublishConfig
 app.use express.static(process.cwd() + '/public')
 app.set 'view engine', 'jade'
